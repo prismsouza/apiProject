@@ -18,7 +18,7 @@ class PersonCollection extends JsonResource
             'name' => $this->name,
             'masp' => $this->masp,
             'href' => [
-                'more' => route('people.show', $this->id)
+                'more details' => route('people.show', $this->masp)
             ]
         ];
     }

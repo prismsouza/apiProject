@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('/people', 'PersonController');
+Route::apiResource('/unities', 'UnityController');
 
+//Route::get('/unities/{unity_name}', 'UnityController@showByName')->name('unities/unity_name');
+Route::get('/unities/{unity_id}/people', 'PersonController@filter')->name('unities/unity_id/people');
+//Route::get('/unities/{unity_name}/people', 'PersonController@filter')->name('unities/unity_name/people');
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/

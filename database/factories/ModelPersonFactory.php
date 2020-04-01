@@ -4,12 +4,22 @@
 
 use App\Model\Person;
 use Faker\Generator as Faker;
+use App\Model\Unity;
 
 $factory->define(Person::class, function (Faker $faker) {
 
+    $unities = Unity::all()->pluck('unity_id')->toArray();
+    for ($i = 0; $i < 10; $i++) {
+        $unity_id = $faker->randomElement($unities);
+
+        /*Match::create([
+            'unity_id' => $unity_id,
+        ]);*/
+    }
+
     return [
-        'name' => $faker->name(),
         'masp' => $faker->unique()->numberBetween(911111, 1799999),
+        'name' => $faker->name(),
         'is_active' => $faker->randomElement(['yes', 'no']),
         'cpf' => $faker->unique()->numberBetween(911111, 1799999),
         'rg' => $faker->unique()->numberBetween(11111111, 29999999),
@@ -21,6 +31,6 @@ $factory->define(Person::class, function (Faker $faker) {
         'occupation' => $faker->randomElement(['QPBM', 'QPEBM', 'QOBM', 'QOEBM']),
         'level' => $faker->randomElement(['SD', 'SGT', 'TEN', 'CAP']),
         'functional_situation' => $faker->randomElement(['ATIVIDADE FIM NA SEDE', 'ATIVIDADE FIM DESTACADO', 'ATIVIDADE MEIO']),
-        'unity_code' => $faker->numberBetween(1111, 9999)
+        'unity_id' => $faker->numberBetween(1, 9)
     ];
 });

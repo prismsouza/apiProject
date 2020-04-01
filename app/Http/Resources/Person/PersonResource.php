@@ -28,7 +28,7 @@ class PersonResource extends JsonResource
             'occupation' => $this->occupation,
             'level' => $this->level,
             'functional situation' => $this->functional_situation,
-            'unity code'  => $this->unity_code,
+            'unity id'  => $this->unity_id,
         ];
     }
 }

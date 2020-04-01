@@ -2,86 +2,60 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonRequest;
 use App\Http\Resources\Person\PersonCollection;
 use App\Http\Resources\Person\PersonResource;
 use App\Model\Person;
+use App\Model\Unity;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PersonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
+        //return Person::all();
         return PersonCollection::collection(Person::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Person  $person
-     * @return \Illuminate\Http\Response
-     */
     public function show(Person $person)
     {
         return new PersonResource($person);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Model\Person  $person
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Person $person)
+    public function filter(Unity $unity_id)
     {
-        //
+        return PersonCollection::collection(Person::where('unity_id', $unity_id->unity_id)->get());
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Person  $person
-     * @return \Illuminate\Http\Response
-     */
+    public function create() {
+
+    }
+    public function store(PersonRequest $request)
+    {
+        $person = new Person;
+        $person->masp = $request->masp;
+        $person->name = $request->name;
+        $person->cpf = $request->cpf;
+        $person->save();
+
+        return response([
+            'data' => new PersonResource($person)
+        ], Response::HTTP_CREATED);
+    }
+    public function edit(Person $person) { }
+
     public function update(Request $request, Person $person)
     {
-        //
-    }
+        $person->update($request->all());
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Model\Person  $person
-     * @return \Illuminate\Http\Response
-     */
+        return response([
+            'data' => new PersonResource($person)
+        ], Response::HTTP_CREATED);
+    }
     public function destroy(Person $person)
     {
-        //
+        $person->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

@@ -14,23 +14,21 @@ class CreatePeopleTable extends Migration
     public function up()
     {
         Schema::create('people', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('masp')->primary();
             $table->string('name');
-            $table->string('masp');
-            $table->string('is_active');
-            $table->string('cpf');
-            $table->string('rg');
-            $table->string('is_accredited');
-            $table->string('driver_category');
-            $table->char('gender');
-            $table->date('birth_date');
-            $table->date('inclusion_date');
-            $table->string('occupation');
-            $table->string('level');
-            $table->string('functional_situation');
-            $table->integer('unity_code');
-
-            $table->timestamps();
+            $table->string('is_active')->nullable();
+            $table->string('cpf')->unique();
+            $table->string('rg')->unique()->nullable();
+            $table->string('is_accredited')->nullable();
+            $table->string('driver_category')->nullable();
+            $table->char('gender')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->date('inclusion_date')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('level')->nullable();
+            $table->string('functional_situation')->nullable();
+            $table->integer('unity_id')->nullable()->unsigned()->nullable();
+            $table->foreign('unity_id')->references('unity_id')->on('unities');
         });
     }
 
