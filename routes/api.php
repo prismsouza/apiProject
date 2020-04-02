@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('/people', 'PersonController');
-Route::apiResource('/unities', 'UnityController');
+Route::apiResource('/units', 'UnitController');
 
-//Route::get('/unities/{unity_name}', 'UnityController@showByName')->name('unities/unity_name');
-Route::get('/unities/{unity_id}/people', 'PersonController@filter')->name('unities/unity_id/people');
-//Route::get('/unities/{unity_name}/people', 'PersonController@filter')->name('unities/unity_name/people');
+Route::get('/people/cpf/{cpf}', 'PersonController@getPersonByCPF');
+Route::get('/units/unit_name/{unit_name}', 'UnitController@getUnitByName');//->name('units/unit_name');
+Route::get('/units/{unit_id}/people', 'PersonController@filter')->name('units/unit_id/people');
+//Route::get('/units/{unit_name}/people', 'PersonController@filter')->name('units/unit_name/people');
 

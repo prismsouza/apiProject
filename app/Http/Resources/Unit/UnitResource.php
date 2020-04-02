@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Unity;
+namespace App\Http\Resources\Unit;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UnityResource extends JsonResource
+class UnitResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,11 @@ class UnityResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'unity_id' => $this->unity_id,
-            'unity_name' => $this->unity_name,
-            'unity_description' => $this->unity_description,
+            'unit_id' => $this->unit_id,
+            'unit_name' => $this->unit_name,
+            'unit_description' => $this->unit_description,
             'href' => [
-                'people from unity' => route('unities/unity_id/people', $this->unity_id)
+                'people from unit' => route('units/unit_id/people', $this->unit_id)
             ]
         ];
     }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UnityRequest extends FormRequest
+class UnitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,9 @@ class UnityRequest extends FormRequest
     public function rules()
     {
         return [
-            'unity_name' => 'required',
-            'unity_description' => 'required'
+            'unit_id' => 'required',
+            'unit_name' => 'required',
+            'unit_description' => 'required'
         ];
     }
 }

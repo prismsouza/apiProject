@@ -11,7 +11,7 @@ trait ExceptionTrait
     {
         if ($e instanceof ModelNotFoundException) {
             return response()->json([
-                'errors' => 'Person Model not found'
+                'errors' => 'Model not found'
             ],Response::HTTP_NOT_FOUND);
         }
 

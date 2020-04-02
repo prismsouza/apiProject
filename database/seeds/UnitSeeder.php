@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UnitySeeder extends Seeder
+class UnitSeeder extends Seeder
 {
     /**
      * Run the database seeds.

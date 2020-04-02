@@ -87,9 +87,15 @@
                 <div class="links">
                     <a href="/api/people">GET people</a>
                     <a href="/api/people/1729862">GET people/{masp}</a>
-                    <a href="/api/unities">GET unities</a>
-                    <a href="/api/unities/6">GET unities/{unit_id}</a>
-                    <a href="/api/unities/6/people">GET unities/{unit_id}/people</a>
+                    <a href="/api/people/cpf/11462236685">GET people/cpf/{cpf}</a>
+                </div><br>
+                <div class="links">
+                    <a href="/api/units">GET units</a>
+                    <a href="/api/units/105">GET units/{unit_id}</a>
+                    <a href="/api/units/unit_name/dlf">GET units/unit_name/{unit_name}</a>
+                </div><br>
+                <div class="links">
+                    <a href="/api/units/105/people">GET units/{unit_id}/people</a>
                 </div>
             </div>
         </div>

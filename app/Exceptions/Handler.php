@@ -2,8 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\ExceptionTrait;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Auth\AuthenticationException;
+//use Illuminate\Auth\AuthenticationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -15,12 +17,12 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        \Illuminate\Auth\AuthenticationException::class,
+        /*\Illuminate\Auth\AuthenticationException::class,
         \Illuminate\Auth\Access\AuthorizationException::class,
         \Symfony\Component\HttpKernel\Exception\HttpException::class,
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
-        \Illuminate\Validation\ValidationException::class,
+        \Illuminate\Validation\ValidationException::class*/
     ];
 
     /**
@@ -55,11 +57,14 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
+
+
     public function render($request, Throwable $exception)
     {
-        if ($request->expectsJson()) {
-            return $this->apiException($request, $exception);
-        }
-        return parent::render($request, $exception);
+        //if ($request->expectsJson()) {
+        return $this->apiException($request, $exception);
+        //}
+
+        //return parent::render($request, $exception);
     }
 }

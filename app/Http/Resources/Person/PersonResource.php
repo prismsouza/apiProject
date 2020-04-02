@@ -17,18 +17,18 @@ class PersonResource extends JsonResource
         return [
             'name' => $this->name,
             'masp' => $this->masp,
-            'is active' => $this->is_active,
+            'is_active' => $this->is_active,
             'cpf' => $this->cpf,
             'rg' => $this->rg,
-            'is accredited'=> $this->is_accredited,
+            'is_accredited'=> $this->is_accredited,
             'driver category license' => $this->driver_category,
             'gender' => $this->gender,
-            'birth date' => $this->birth_date,
+            'birth_date' => $this->birth_date,
             'inclusion date' => $this->inclusion_date,
             'occupation' => $this->occupation,
             'level' => $this->level,
-            'functional situation' => $this->functional_situation,
-            'unity id'  => $this->unity_id,
+            'functional_situation' => $this->functional_situation,
+            'unit_id'  => $this->unit_id,
         ];
     }
 }

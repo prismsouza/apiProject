@@ -11,6 +11,6 @@ class Person extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'masp', 'is_active', 'cpf', 'rg', 'is_accredited', 'driver_category', 'gender', 'birth_date', 'inclusion_date', 'occupation', 'level', 'functional_situation', 'unity_id'
+        'name', 'masp', 'is_active', 'cpf', 'rg', 'is_accredited', 'driver_category', 'gender', 'birth_date', 'inclusion_date', 'occupation', 'level', 'functional_situation', 'unit_id'
     ];
 }

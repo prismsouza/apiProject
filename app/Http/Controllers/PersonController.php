@@ -6,7 +6,7 @@ use App\Http\Requests\PersonRequest;
 use App\Http\Resources\Person\PersonCollection;
 use App\Http\Resources\Person\PersonResource;
 use App\Model\Person;
-use App\Model\Unity;
+use App\Model\Unit;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,7 +14,6 @@ class PersonController extends Controller
 {
     public function index()
     {
-        //return Person::all();
         return PersonCollection::collection(Person::all());
     }
 
@@ -23,9 +22,15 @@ class PersonController extends Controller
         return new PersonResource($person);
     }
 
-    public function filter(Unity $unity_id)
+    public function getPersonByCPF($cpf)
     {
-        return PersonCollection::collection(Person::where('unity_id', $unity_id->unity_id)->get());
+        $person = Person::where('cpf', $cpf)->first();
+        return new PersonResource($person);
+    }
+
+    public function filter(Unit $unit_id)
+    {
+        return PersonCollection::collection(Person::where('unit_id', $unit_id->unit_id)->get());
     }
 
     public function create() {

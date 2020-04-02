@@ -8,13 +8,12 @@ class CreatePeopleTable extends Migration
 {
     /**
      * Run the migrations.
-     *
      * @return void
      */
     public function up()
     {
         Schema::create('people', function (Blueprint $table) {
-            $table->string('masp')->primary();
+            $table->uuid('masp')->primary();
             $table->string('name');
             $table->string('is_active')->nullable();
             $table->string('cpf')->unique();
@@ -27,8 +26,8 @@ class CreatePeopleTable extends Migration
             $table->string('occupation')->nullable();
             $table->string('level')->nullable();
             $table->string('functional_situation')->nullable();
-            $table->integer('unity_id')->nullable()->unsigned()->nullable();
-            $table->foreign('unity_id')->references('unity_id')->on('unities');
+            $table->integer('unit_id')->nullable()->unsigned()->nullable();
+            $table->foreign('unit_id')->references('unit_id')->on('units');
         });
     }
 
